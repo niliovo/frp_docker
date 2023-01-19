@@ -54,6 +54,6 @@ docker run -itd --name frps --hostname frps --net host --restart always -v /your
 
 # 捐赠
 
-![支付宝](https://github.com/niliovo/frp_docker/blob/main/donation/alipay.JPG)
+![支付宝](blob/main/donation/alipay.JPG)
 
-![微信](https://github.com/niliovo/frp_docker/blob/main/donation/wechatpay.JPG)
+![微信](blob/main/donation/wechatpay.JPG)
