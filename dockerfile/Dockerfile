@@ -6,13 +6,13 @@ ENV m_dir="/frp"
 
 WORKDIR $m_dir
 
-RUN pwd
+RUN pwd && ls -la
 
-COPY ./frp_build.sh $m_dir
+COPY frp_build.sh $m_dir
 
-COPY ./frp_startup.sh $m_dir
+COPY frp_startup.sh $m_dir
 
-COPY ./health_check.sh $m_dir
+COPY health_check.sh $m_dir
 
 RUN chmod a+x $m_dir/frp_build.sh && $m_dir/frp_build.sh
 
