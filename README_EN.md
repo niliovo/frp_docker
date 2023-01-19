@@ -3,15 +3,15 @@
 - [中文](./README.md)
 - [ENGLISH](./README_EN.md)
 
-# 本项目基于[frp](https://github.com/fatedier/frp),自动打包最新版frp到docker容器
+# This project is based on [frp](https://github.com/fatedier/frp),It will auto packaging the newest FRP to Docker container
 
-## Docker-Cli使用指南
+## Docker-Cli Usage Guide
 
 ```bash
 docker run -itd --name frps --hostname frps --net host --restart always -v /your_path/frps/config:/frp/config -v /your_path/frps/tls:/frp/tls -e TZ=Asia/Shanghai -e FRP_TYPE=frps niliaerith:latest
 ```
 
-## Docker Compose使用指南
+## Docker Compose Usage Guide
 
 ```compose.yml
   frps:
@@ -43,31 +43,31 @@ docker run -itd --name frps --hostname frps --net host --restart always -v /your
       - FRP_TYPE=frpc
 ```
 
-## 变量
+## Variable
 
-> 必须变量
+> Necessary Variable
 - `-v /your_path/frps/config:/frp/config` 
-- - `/frp/config`目录为配置文件目录,默认服务端配置为`frps.ini`，默认客户端配置为`frpc.ini`，第一次运行自动生成，请自行修改
+- - `/frp/config` directory is the configuration file directory,The default server configuration is `frps.ini`，The default client configuration is`frpc.ini`，It will auto generate when first run，please change it by yourself
 - `-e FRP_TYPE=frps`
-- - `-e FRP_TYPE=`为指定frp功能，填`frps`即为服务端(frps)，填`frpc`即为客户端(frpc)，默认为`frps`
+- - `-e FRP_TYPE=`is specifing the function of the FRP，Fill in `frps` to enable the server(frps)，Fill in `frpc` to enable the client(frpc)，The default option is `frps`
 
-> 可选变量
+> Optional Variable
 - `/your_path/frps/tls:/frp/tls`
-- - `/frp/tls`为TLS加密文件目录
+- - `/frp/tls`Is the TLS encrypted file directory
 - `TZ=Asia/Shanghai`
-- - `TZ`为时区,默认为`Asia/Shanghai`
+- - `TZ`Is the timezone,The default option is `Asia/Shanghai`
 
-> 更多详细配置变量内容请移步[FRP完整文档](https://gofrp.org/docs/)
+> For more details about how to configure variables, go to the following steps[Complete documentation of FRP](https://gofrp.org/docs/)
 
-# 感谢
+# Thanks
 
 - [@fatedier/frp](https://github.com/fatedier/frp)
 - [GitHub](https://github.com/)
 - [Docker Hub](https://hub.docker.com/)
-- [Github文件加速](https://tool.mintimate.cn/gh/)
+- [Github file acceleration](https://tool.mintimate.cn/gh/)
 
-# 捐赠
+# Donation
 
-![支付宝](./donation/alipay.JPG)
+![Alipay](./donation/alipay.JPG)
 
-![微信](./donation/wechatpay.JPG)
+![WechatPay](./donation/wechatpay.JPG)
