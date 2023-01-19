@@ -26,13 +26,48 @@ jobs:
       - name: Set up Docker Buildx
         id: buildx
         uses: docker/setup-buildx-action@v2
-      - name: Build and push
-        id: docker_build
+      - name: Build and push amd64
+        id: docker_build_amd64
+        run: pwd && sed -i "s#amd64#amd64#g" ./dockerfile/frp_build.sh
         uses: docker/build-push-action@v3
         with:
-          context: ./dockerfile/
-          file: ./dockerfile/Dockerfile
+          context: ./dockerfile_amd64/
+          file: ./dockerfile_amd64/Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/frp:latest
+          platforms: linux/amd64
+      - name: Build and push 386
+        id: docker_build_386
+        run: pwd && sed -i "s#amd64#386#g" ./dockerfile/frp_build.sh
+        uses: docker/build-push-action@v3
+        with:
+          context: ./dockerfile_386/
+          file: ./dockerfile_386/Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/frp:latest
+          platforms: linux/386
+      - name: Build and push arm64
+        id: docker_build_arm64
+        run: pwd && sed -i "s#386#arm64#g" ./dockerfile/frp_build.sh
+        uses: docker/build-push-action@v3
+        with:
+          context: ./dockerfile_arm64/
+          file: ./dockerfile_arm64/Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/frp:latest
+          platforms: linux/arm64
+      - name: Build and push arm
+        id: docker_build_arm
+        run: pwd && sed -i "s#arm64#arm#g" ./dockerfile/frp_build.sh
+        uses: docker/build-push-action@v3
+        with:
+          context: ./dockerfile_arm/
+          file: ./dockerfile_arm/Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKER_USERNAME }}/frp:latest
+          platforms: linux/arm
       - name: Image digest
-        run: echo ${{ steps.docker_build.outputs.digest }}
+        run: echo ${{ steps.docker_build_amd64.outputs.digest }}
+        run: echo ${{ steps.docker_build_386.outputs.digest }}
+        run: echo ${{ steps.docker_build_arm64.outputs.digest }}
+        run: echo ${{ steps.docker_build_arm.outputs.digest }}
