@@ -9,9 +9,9 @@ docker run -itd --name frps --hostname frps --net host --restart always -v /your
 ```
 
 > 必须参数为`-v /your_path/frps/config:/frp/config` `-e FRP_TYPE=frps`
->> `/frp/config`目录为配置文件目录
+>> `/frp/config`目录为配置文件目录。
 >> `-e FRP_TYPE`为指定frp功能，填`frps`即为服务端，填`frpc`即为客户端，默认为frps
->>> `/frp/tls目录`为TLS加密文件目录
+>>> `/frp/tls目录`为TLS加密文件目录。
 >>> `TZ`为时区
 
 ## Docker Compose使用指南
@@ -54,6 +54,6 @@ docker run -itd --name frps --hostname frps --net host --restart always -v /your
 
 # 捐赠
 
-![支付宝](https://github.com/niliovo/frp_docker/blob/main/donation/alipay.JPG)
+![支付宝](./donation/alipay.JPG)
 
-![微信](https://github.com/niliovo/frp_docker/blob/main/donation/wechatpay.JPG)
+![微信](./donation/wechatpay.JPG)
