@@ -36,7 +36,7 @@ jobs:
           tags: ${{ secrets.DOCKER_USERNAME }}/frp:latest
           platforms: linux/amd64
       - name: change build file to 386
-        run: pwd && sed -i "s#amd64#386#g" ./dockerfile/frp_build.sh
+        run: pwd && ls -la && sed -i "s#amd64#386#g" ./dockerfile/frp_build.sh
       - name: Build and push 386
         id: docker_build_386
         uses: docker/build-push-action@v3
@@ -47,7 +47,7 @@ jobs:
           tags: ${{ secrets.DOCKER_USERNAME }}/frp:latest
           platforms: linux/386
       - name: change build file to arm64
-        run: pwd && sed -i "s#386#arm64#g" ./dockerfile/frp_build.sh
+        run: sed -i "s#386#arm64#g" ./dockerfile/frp_build.sh
       - name: Build and push arm64
         id: docker_build_arm64
         uses: docker/build-push-action@v3
@@ -58,7 +58,7 @@ jobs:
           tags: ${{ secrets.DOCKER_USERNAME }}/frp:latest
           platforms: linux/arm64
       - name: change build file to arm
-        run: pwd && sed -i "s#arm64#arm#g" ./dockerfile/frp_build.sh
+        run: sed -i "s#arm64#arm#g" ./dockerfile/frp_build.sh
       - name: Build and push arm
         id: docker_build_arm
         uses: docker/build-push-action@v3
