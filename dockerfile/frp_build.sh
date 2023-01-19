@@ -21,9 +21,9 @@ tg_v=frp_"$v_n"_linux_amd64.tar.gz
 
 mkdir -p $sc_d
 
-curl -C - -O https://github.com/fatedier/frp/releases/download/$v/$tg_v
+#curl -C - -O https://github.com/fatedier/frp/releases/download/$v/$tg_v
 
-#curl -C - -O https://gh.flyinbug.top/gh/https://github.com/fatedier/frp/releases/download/$v/$tg_v
+curl -C - -O https://gh.flyinbug.top/gh/https://github.com/fatedier/frp/releases/download/$v/$tg_v
 
 tar -zxvf $tg_v -C ./
 
