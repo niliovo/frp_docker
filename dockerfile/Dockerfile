@@ -1,6 +1,6 @@
-MAINTAINER niliovo 1791356563@qq.com
-
 FROM alpine:latest
+
+MAINTAINER niliovo 1791356563@qq.com
 
 ENV m_dir="/frp"
 
