@@ -8,7 +8,7 @@ sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories
 
 apk --update --no-cache add openssl tzdata curl tar wget dpkg
 
-pf=$(dpkg --print-architecture|grep -v "musl-linux-"|grep -v "i"|grep -v "hf")
+pf="$(dpkg --print-architecture|grep -v "musl-linux-"|grep -v "i"|grep -v "hf")"
 
 echo "$pf"
 
