@@ -8,18 +8,18 @@ sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories
 
 apk --update --no-cache add openssl tzdata curl tar wget dpkg
 
+pf=$(dpkg --print-architecture|grep -v "musl-linux-"|grep -v "i"|grep -v "hf")
+
+echo $pf
+
 v=$(wget -qO- -t1 -T2 "https://api.github.com/repos/fatedier/frp/releases/latest" | grep "tag_name" | head -n 1 | awk -F ":" '{print $2}' | sed 's/\"//g;s/,//g;s/ //g'
 )
 
 v_n=${v#*v}
 
-plf=$(dpkg --print-architecture|grep -v "musl-linux-"|grep -v "i"|grep -v "hf")
+f_v=frp_$v_n\_linux_$pf
 
-echo $plf
-
-f_v=frp_$v_n\_linux_$plf
-
-tg_v=frp_$v_n\_linux_$plf\.tar.gz
+tg_v=frp_$v_n\_linux_$pf\.tar.gz
 
 echo "$f_v,$tg_v"
 
