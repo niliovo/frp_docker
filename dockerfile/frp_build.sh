@@ -15,7 +15,9 @@ v=$(wget -qO- -t1 -T2 "https://api.github.com/repos/fatedier/frp/releases/latest
 
 v_n=${v#*v}
 
-pf=$(dpkg --print-architecture|grep -v musl-linux-|grep -v i|grep -v hf)
+p_f=$(dpkg --print-architecture|grep -v musl-linux-|grep -v i|grep -v hf)
+
+echo $p_f
 
 f1=frp_$v_n
 f2=_linux_$pf
