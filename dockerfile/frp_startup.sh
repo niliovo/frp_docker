@@ -94,5 +94,8 @@ chmod -R 755 $m_d
 
 cd ..
 
+echo "${FRP_TYPE}配置文件校验"
+$m_d/${FRP_TYPE} verify -c $m_d/$nc_d/$f_i
+
 echo "启动${FRP_TYPE}服务"
 $m_d/${FRP_TYPE} -c $m_d/$nc_d/$f_i
