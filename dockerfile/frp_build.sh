@@ -15,19 +15,7 @@ v=$(wget -qO- -t1 -T2 "https://api.github.com/repos/fatedier/frp/releases/latest
 
 v_n=${v#*v}
 
-p=$(dpkg --print-architecture|grep -v musl-linux-)
-
-if [ "$p" = "amd64" ]; then
-	$pf="amd64"
-elif [ "$p" = "i386" ]; then
-	$pf="386"
-elif [ "$p" = "arm64" ]; then
-	$pf="arm64"
-elif [ "$p" = "armhf" ]; then
-	$pf="arm"
-fi
-
-echo "$pf"
+pf=$(dpkg --print-architecture|grep -v musl-linux-|grep -v i|grep -v hf)
 
 f_v=frp_"$v_n"_linux_"$pf"
 
