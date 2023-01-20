@@ -8,19 +8,17 @@ sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories
 
 apk --update --no-cache add openssl tzdata curl tar wget dpkg
 
-dpkg --print-architecture
-
-p=$(dpkg --print-architecture|grep -v musl-linux-)
+p=$(dpkg --print-architecture)
 
 echo $p
 
-if [ p=="amd64" ]; then
+if [ p=="musl-linux-amd64" ]; then
 	pf=amd64
-elif [ p=="i386" ]; then
+elif [ p=="musl-linux-i386" ]; then
 	pf=386
-elif [ p=="arm64" ]; then
+elif [ p=="musl-linux-arm64" ]; then
 	pf=arm64
-elif [ p=="armhf" ]; then
+elif [ p=="musl-linux-armhf" ]; then
 	pf=arm
 fi
 
