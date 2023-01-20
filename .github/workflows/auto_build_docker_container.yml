@@ -35,48 +35,6 @@ jobs:
           file: ./dockerfile/Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/frp:amd64,${{ secrets.DOCKER_USERNAME }}/frp:latest
-          platforms: linux/amd64 #,linux/386,linux/arm64,linux/arm
+          platforms: linux/amd64,linux/386,linux/arm64,linux/arm
       - name: amd64 Image digest
         run: echo ${{ steps.docker_build_amd64.outputs.digest }}
-
-      - name: change build file to 386
-        run: sed -i "s#amd64#386#g" ./dockerfile/frp_build.sh
-      - name: Build and push 386
-        id: docker_build_386
-        uses: docker/build-push-action@v3
-        with:
-          context: ./dockerfile/
-          file: ./dockerfile/Dockerfile
-          push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/frp:386
-          platforms: linux/386
-      - name: 386 Image digest
-        run: echo ${{ steps.docker_build_386.outputs.digest }}
-
-      - name: change build file to arm64
-        run: sed -i "s#386#arm64#g" ./dockerfile/frp_build.sh
-      - name: Build and push arm64
-        id: docker_build_arm64
-        uses: docker/build-push-action@v3
-        with:
-          context: ./dockerfile/
-          file: ./dockerfile/Dockerfile
-          push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/frp:arm64
-          platforms: linux/arm64
-      - name: arm64 Image digest
-        run: echo ${{ steps.docker_build_arm64.outputs.digest }}
-
-      - name: change build file to arm
-        run: sed -i "s#arm64#arm#g" ./dockerfile/frp_build.sh
-      - name: Build and push arm
-        id: docker_build_arm
-        uses: docker/build-push-action@v3
-        with:
-          context: ./dockerfile/
-          file: ./dockerfile/Dockerfile
-          push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/frp:arm
-          platforms: linux/arm
-      - name: arm Image digest
-        run: echo ${{ steps.docker_build_arm.outputs.digest }}

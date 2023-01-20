@@ -8,8 +8,6 @@ sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories
 
 apk --update --no-cache add openssl tzdata curl tar wget dpkg
 
-dpkg --print-architecture
-
 rm -rf /tmp/*
 
 v=$(wget -qO- -t1 -T2 "https://api.github.com/repos/fatedier/frp/releases/latest" | grep "tag_name" | head -n 1 | awk -F ":" '{print $2}' | sed 's/\"//g;s/,//g;s/ //g'
@@ -17,9 +15,21 @@ v=$(wget -qO- -t1 -T2 "https://api.github.com/repos/fatedier/frp/releases/latest
 
 v_n=${v#*v}
 
-f_v=frp_"$v_n"_linux_amd64
+p=$(dpkg --print-architecture|grep -v musl-linux-)
 
-tg_v=frp_"$v_n"_linux_amd64.tar.gz
+if [ p="amd64" ]; then
+	pf=amd64
+elif [ p="i386" ]; then
+	pf=386
+elif [ p="arm64" ]; then
+	pf=arm64
+elif [ p="armhf" ]; then
+	pf=arm
+fi
+
+f_v=frp_"$v_n"_linux_"$pf"
+
+tg_v=frp_"$v_n"_linux_"$pf".tar.gz
 
 mkdir -p $sc_d
 
