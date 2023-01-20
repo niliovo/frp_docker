@@ -17,6 +17,8 @@ v_n=${v#*v}
 
 p=$(dpkg --print-architecture|grep -v musl-linux-)
 
+pf="amd64"
+
 if [ "$p" = "amd64" ]; then
 	pf="amd64"
 elif [ "$p" = "i386" ]; then
