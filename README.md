@@ -79,13 +79,9 @@ docker run -itd --name frpc --hostname frpc --net host --restart always -v /your
 ## 支持平台
 
 - amd64
-- - `niliaerith/frp:latest` 或 `niliaerith/frp:amd64`
 - 386/32
-- - `niliaerith/frp:386`
 - arm64
-- - `niliaerith/frp:arm64`
 - arm/v7
-- - `niliaerith/frp:arm`
 
 # 感谢
 
