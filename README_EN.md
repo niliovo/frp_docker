@@ -52,10 +52,13 @@ docker run -itd --name frps --hostname frps --net host --restart always -v /your
 - - `-e FRP_TYPE=`is specifing the function of the FRP，Fill in `frps` to enable the server(frps)，Fill in `frpc` to enable the client(frpc)，The default option is `frps`
 
 > Optional Variable
-- `/your_path/frps/tls:/frp/tls`
-- - `/frp/tls`Is the TLS encrypted file directory
 - `TZ=Asia/Shanghai`
 - - `TZ`Is the timezone,The default option is `Asia/Shanghai`
+- The following options take effect only when custom TLS protocol encryption is enabled,[official documentation](http://gofrp.org/docs/features/common/network/network-tls/)
+- `/your_path/frps/tls:/frp/tls`
+- - `/frp/tls`Is the TLS encrypted file directory
+- `DOMAIN=www.example.com`
+- - `www.example.com` Change to your domain name
 
 > For more details about how to configure variables, go to the following steps[Complete documentation of FRP](https://gofrp.org/docs/)
 

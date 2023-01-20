@@ -4,6 +4,8 @@ TZ=${TZ:-Asia/Shanghai}
 
 FRP_TYPE=${FRP_TYPE:-frps}
 
+DOMAIN=${DOMAIN:-www.example.com}
+
 m_d="/frp"
 
 sc_d="/config"
@@ -56,28 +58,28 @@ basicConstraints       = CA:true
 EOF
 
 openssl genrsa -out frp.key 2048
-openssl req -x509 -new -nodes -key frp.key -subj "/CN=*.niliovo.top" -days 100000 -out frp.crt
+openssl req -x509 -new -nodes -key frp.key -subj "/CN=${DOMAIN}" -days 100000 -out frp.crt
 
 openssl genrsa -out frps.key 2048
 openssl req -new -sha256 -key frps.key \
-    -subj "/C=XX/ST=DEFAULT/L=DEFAULT/O=DEFAULT/CN=CN=*.niliovo.top" \
+    -subj "/C=XX/ST=DEFAULT/L=DEFAULT/O=DEFAULT/CN=CN=${DOMAIN}" \
     -reqexts SAN \
-    -config <(cat my-openssl.cnf <(printf "\n[SAN]\nsubjectAltName=DNS:localhost,DNS:*.niliovo.top")) \
+    -config <(cat my-openssl.cnf <(printf "\n[SAN]\nsubjectAltName=DNS:localhost,DNS:${DOMAIN}")) \
     -out frps.csr
 openssl x509 -req -days 100000 -sha256 \
 	-in frps.csr -CA frp.crt -CAkey frp.key -CAcreateserial \
-	-extfile <(printf "subjectAltName=DNS:localhost,DNS:*.niliovo.top") \
+	-extfile <(printf "subjectAltName=DNS:localhost,DNS:${DOMAIN}") \
 	-out frps.crt
 
 openssl genrsa -out frpc.key 2048
 openssl req -new -sha256 -key frpc.key \
-    -subj "/C=XX/ST=DEFAULT/L=DEFAULT/O=DEFAULT/CN=*.niliovo.top" \
+    -subj "/C=XX/ST=DEFAULT/L=DEFAULT/O=DEFAULT/CN=${DOMAIN}" \
     -reqexts SAN \
-    -config <(cat my-openssl.cnf <(printf "\n[SAN]\nsubjectAltName=DNS:localhost,DNS:*.niliovo.top")) \
+    -config <(cat my-openssl.cnf <(printf "\n[SAN]\nsubjectAltName=DNS:localhost,DNS:${DOMAIN}")) \
     -out frpc.csr
 openssl x509 -req -days 100000 -sha256 \
     -in frpc.csr -CA frp.crt -CAkey frp.key -CAcreateserial \
-	-extfile <(printf "subjectAltName=DNS:localhost,DNS:*.niliovo.top") \
+	-extfile <(printf "subjectAltName=DNS:localhost,DNS:${DOMAIN}") \
 	-out frpc.crt
 
 cd ..

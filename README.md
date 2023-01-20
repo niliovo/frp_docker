@@ -26,6 +26,7 @@ docker run -itd --name frps --hostname frps --net host --restart always -v /your
     environment:
       - TZ=Asia/Shanghai
       - FRP_TYPE=frps
+      - DOMAIN=www.example.com
 ```
 
 ```compose.yml
@@ -41,6 +42,7 @@ docker run -itd --name frps --hostname frps --net host --restart always -v /your
     environment:
       - TZ=Asia/Shanghai
       - FRP_TYPE=frpc
+      - DOMAIN=www.example.com
 ```
 
 ## 变量
@@ -52,10 +54,13 @@ docker run -itd --name frps --hostname frps --net host --restart always -v /your
 - - `-e FRP_TYPE=`为指定frp功能，填`frps`即为服务端(frps)，填`frpc`即为客户端(frpc)，默认为`frps`
 
 > 可选变量
-- `/your_path/frps/tls:/frp/tls`
-- - `/frp/tls`为TLS加密文件目录
 - `TZ=Asia/Shanghai`
 - - `TZ`为时区,默认为`Asia/Shanghai`
+- 下列选项仅当开启自定义TLS协议加密后生效,[官方文档](http://gofrp.org/docs/features/common/network/network-tls/)
+- `/your_path/frps/tls:/frp/tls`
+- - `/frp/tls`为TLS加密文件目录
+- `DOMAIN=www.example.com`
+- - `www.example.com`修改为你的域名
 
 > 更多详细配置变量内容请移步[FRP完整文档](https://gofrp.org/docs/)
 
