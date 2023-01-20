@@ -10,7 +10,7 @@ apk --update --no-cache add openssl tzdata curl tar wget dpkg
 
 pf=$(dpkg --print-architecture|grep -v "musl-linux-"|grep -v "i"|grep -v "hf")
 
-echo $pf
+echo "$pf"
 
 v=$(wget -qO- -t1 -T2 "https://api.github.com/repos/fatedier/frp/releases/latest" | grep "tag_name" | head -n 1 | awk -F ":" '{print $2}' | sed 's/\"//g;s/,//g;s/ //g'
 )
