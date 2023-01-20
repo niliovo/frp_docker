@@ -17,9 +17,11 @@ v_n=${v#*v}
 
 pf=$(dpkg --print-architecture|grep -v musl-linux-|grep -v i|grep -v hf)
 
-f_v=frp_"$v_n"_linux_'$pf'
+f_v=frp_$v_n\_linux_$pf
 
-tg_v=frp_"$v_n"_linux_'$pf'.tar.gz
+tg_v=frp_$v_n\_linux_$pf\.tar.gz
+
+echo "$f_v,$tg_v"
 
 mkdir -p $sc_d
 
