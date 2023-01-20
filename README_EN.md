@@ -7,11 +7,21 @@
 
 ## Docker-Cli Usage Guide
 
+- FRPS
+
 ```bash
-docker run -itd --name frps --hostname frps --net host --restart always -v /your_path/frps/config:/frp/config -v /your_path/frps/tls:/frp/tls -e TZ=Asia/Shanghai -e FRP_TYPE=frps niliaerith:latest
+docker run -itd --name frps --hostname frps --net host --restart always -v /your_path/frps/config:/frp/config -v /your_path/frps/tls:/frp/tls -e TZ=Asia/Shanghai -e FRP_TYPE=frps -e DOMAIN=www.example.com niliaerith/frp:latest
+```
+
+- FRPC
+
+```bash
+docker run -itd --name frpc --hostname frpc --net host --restart always -v /your_path/frpc/config:/frp/config -v /your_path/frpc/tls:/frp/tls -e TZ=Asia/Shanghai -e FRP_TYPE=frpc -e DOMAIN=www.example.com niliaerith/frp:latest
 ```
 
 ## Docker Compose Usage Guide
+
+- FRPS
 
 ```compose.yml
   frps:
@@ -26,7 +36,10 @@ docker run -itd --name frps --hostname frps --net host --restart always -v /your
     environment:
       - TZ=Asia/Shanghai
       - FRP_TYPE=frps
+      - DOMAIN=www.example.com
 ```
+
+- FRPC
 
 ```compose.yml
   frpc:
@@ -41,6 +54,7 @@ docker run -itd --name frps --hostname frps --net host --restart always -v /your
     environment:
       - TZ=Asia/Shanghai
       - FRP_TYPE=frpc
+      - DOMAIN=www.example.com
 ```
 
 ## Variable
@@ -61,6 +75,17 @@ docker run -itd --name frps --hostname frps --net host --restart always -v /your
 - - `www.example.com` Change to your domain name
 
 > For more details about how to configure variables, go to the following steps[Complete documentation of FRP](https://gofrp.org/docs/)
+
+## Support platform
+
+- amd64
+- - `niliaerith/frp:latest` 或 `niliaerith/frp:amd64`
+- 386/32
+- - `niliaerith/frp:386`
+- arm64
+- - `niliaerith/frp:arm64`
+- arm/v7
+- - `niliaerith/frp:arm`
 
 # Thanks
 

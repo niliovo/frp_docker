@@ -7,11 +7,21 @@
 
 ## Docker-Cli使用指南
 
+- FRPS
+
 ```bash
-docker run -itd --name frps --hostname frps --net host --restart always -v /your_path/frps/config:/frp/config -v /your_path/frps/tls:/frp/tls -e TZ=Asia/Shanghai -e FRP_TYPE=frps niliaerith:latest
+docker run -itd --name frps --hostname frps --net host --restart always -v /your_path/frps/config:/frp/config -v /your_path/frps/tls:/frp/tls -e TZ=Asia/Shanghai -e FRP_TYPE=frps -e DOMAIN=www.example.com niliaerith/frp:latest
+```
+
+- FRPC
+
+```bash
+docker run -itd --name frpc --hostname frpc --net host --restart always -v /your_path/frpc/config:/frp/config -v /your_path/frpc/tls:/frp/tls -e TZ=Asia/Shanghai -e FRP_TYPE=frpc -e DOMAIN=www.example.com niliaerith/frp:latest
 ```
 
 ## Docker Compose使用指南
+
+- FRPS
 
 ```compose.yml
   frps:
@@ -28,6 +38,8 @@ docker run -itd --name frps --hostname frps --net host --restart always -v /your
       - FRP_TYPE=frps
       - DOMAIN=www.example.com
 ```
+
+- FRPC
 
 ```compose.yml
   frpc:
@@ -63,6 +75,17 @@ docker run -itd --name frps --hostname frps --net host --restart always -v /your
 - - `www.example.com`修改为你的域名
 
 > 更多详细配置变量内容请移步[FRP完整文档](https://gofrp.org/docs/)
+
+## 支持平台
+
+- amd64
+- - `niliaerith/frp:latest` 或 `niliaerith/frp:amd64`
+- 386/32
+- - `niliaerith/frp:386`
+- arm64
+- - `niliaerith/frp:arm64`
+- arm/v7
+- - `niliaerith/frp:arm`
 
 # 感谢
 
