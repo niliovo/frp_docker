@@ -15,20 +15,13 @@ v=$(wget -qO- -t1 -T2 "https://api.github.com/repos/fatedier/frp/releases/latest
 
 v_n=${v#*v}
 
-p_f=$(dpkg --print-architecture|grep -v musl-linux-|grep -v i|grep -v hf)
+plf=$(dpkg --print-architecture|grep -v "musl-linux-"|grep -v "i"|grep -v "hf")
 
-echo $p_f
+echo $plf
 
-f1=frp_$v_n
-f2=_linux_$pf
+f_v=frp_$v_n\_linux_$plf
 
-f_v=$f1$f2
-
-tg1=frp_$v_n
-tg2=_linux_$pf
-tg3=.tar.gz
-
-tg_v=$tg1$tg2$tg3
+tg_v=frp_$v_n\_linux_$plf\.tar.gz
 
 echo "$f_v,$tg_v"
 
