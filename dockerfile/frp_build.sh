@@ -6,9 +6,9 @@ sc_d="/config"
 
 sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories
 
-apk --update --no-cache add openssl tzdata curl tar wget dpkg
+apk --update --no-cache add openssl tzdata curl tar wget dpkg grep
 
-pf="$(dpkg --print-architecture|grep -v "musl-linux-"|grep -v "i"|grep -v "hf")"
+pf="$(dpkg --print-architecture|sed 's/^.*musl-linux-//g'|sed 's/hf.*$//g'|sed 's/^.*i//g')"
 
 echo "$pf"
 
