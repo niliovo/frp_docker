@@ -8,8 +8,6 @@ sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories
 
 apk --update --no-cache add openssl tzdata curl tar wget dpkg
 
-rm -rf /tmp/*
-
 v=$(wget -qO- -t1 -T2 "https://api.github.com/repos/fatedier/frp/releases/latest" | grep "tag_name" | head -n 1 | awk -F ":" '{print $2}' | sed 's/\"//g;s/,//g;s/ //g'
 )
 
@@ -40,5 +38,7 @@ mv $f_v/* ./
 rm -rf $f_v $tg_v
 
 mv *.ini $sc_d
+
+rm -rf /tmp/*
 
 apk del curl tar wget dpkg
