@@ -15,6 +15,8 @@ v=$(wget -qO- -t1 -T2 "https://api.github.com/repos/fatedier/frp/releases/latest
 
 v_n=${v#*v}
 
+dpkg --print-architecture
+
 f_v=frp_"$v_n"_linux_amd64
 
 tg_v=frp_"$v_n"_linux_amd64.tar.gz
