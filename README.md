@@ -3,7 +3,12 @@
 - [中文](./README.md)
 - [ENGLISH](./README_EN.md)
 
-# 本项目基于[frp](https://github.com/fatedier/frp),自动打包最新版frp到docker容器
+- [Github](https://github.com/niliovo/frp_docker)
+- [Docker Hub](https://hub.docker.com/r/niliaerith/frp)
+
+# 本项目基于下列项目,自动打包最新版frp到docker容器
+
+- [frp](https://github.com/fatedier/frp)
 
 ## Docker-Cli使用指南
 

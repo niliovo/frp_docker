@@ -3,7 +3,12 @@
 - [中文](./README.md)
 - [ENGLISH](./README_EN.md)
 
-# This project is based on [frp](https://github.com/fatedier/frp),It will auto packaging the newest FRP to Docker container
+- [Github](https://github.com/niliovo/frp_docker)
+- [Docker Hub](https://hub.docker.com/r/niliaerith/frp)
+
+# This project is based on below projects,It will auto packaging the newest FRP to Docker container
+
+- [frp](https://github.com/fatedier/frp)
 
 ## Docker-Cli Usage Guide
 
