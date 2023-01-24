@@ -94,9 +94,3 @@ docker run -itd --name frpc --hostname frpc --net host --restart always -v /your
 - [GitHub](https://github.com/)
 - [Docker Hub](https://hub.docker.com/)
 - [Github文件加速](https://tool.mintimate.cn/gh/)
-
-# 捐赠
-
-![支付宝](./donation/alipay.JPG)
-
-![微信](./donation/wechatpay.JPG)
