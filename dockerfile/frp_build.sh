@@ -13,7 +13,7 @@ pf="$(dpkg --print-architecture|sed 's/^.*musl-linux-//g'|sed 's/hf.*$//g'|sed '
 v=$(wget -qO- -t1 -T2 "https://api.github.com/repos/fatedier/frp/releases/latest" | grep "tag_name" | head -n 1 | awk -F ":" '{print $2}' | sed 's/\"//g;s/,//g;s/ //g'
 )
 
-v_n=${v#*v}
+v_n=$(echo $v | sed 's/^.*v//g')
 
 f_v=frp_$v_n\_linux_$pf
 
