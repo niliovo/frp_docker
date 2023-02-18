@@ -94,3 +94,4 @@ docker run -itd --name frpc --hostname frpc --net host --restart always -v /your
 - [GitHub](https://github.com/)
 - [Docker Hub](https://hub.docker.com/)
 - [Github file acceleration](https://tool.mintimate.cn/gh/)
+- [USTC open source software mirror](https://mirrors.ustc.edu.cn/)
